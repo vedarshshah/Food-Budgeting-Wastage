@@ -59,6 +59,10 @@ else {
     {
         $return_val = ["names"=>["Banana"], "prices"=>[$name_to_price["Banana"]]];
     }
+    else if(in_array("orange", $names))
+    {
+        $return_val = ["names"=>["Orange"], "prices"=>[$name_to_price["Orange"]]];
+    }
     else
     {
         $result_items = ["Apple", "Caesar Salad", "French Fries"];
