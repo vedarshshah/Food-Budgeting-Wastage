@@ -7,7 +7,7 @@
         <script src="webcamjs-master/webcam.js" type="text/javascript"></script>
     </head>
     <h1>Food Wastage</h1>
-    <h3 id="mainlink" onclick="goToMainLink();">Go to Food Budegeting</h3>
+    <h3 id="mainlink" onclick="goToMainLink();">Go to Food Budgeting</h3>
 
     <div id="camera"></div>
 
@@ -21,24 +21,15 @@
     <div id="resultscontainer">
         <div id="resultsmoney">
             <span id="resultsmoneywords">
-                Today, your food wastage was worth:
+                You wasted food that was worth:
             </span>
             <br />
             <span id="resultsmoneyactual">
-                 $8
+
             </span>
         </div>
-        <div id="resultsitem">
-            <div id="resultsitemname">Caesar Salad</div>
-            <div id="resultsitemprice">$5</div>
-        </div>
-        <div id="resultsitem">
-            <div id="resultsitemname">Apple</div>
-            <div id="resultsitemprice">$0.50</div>
-        </div>
-        <div id="resultsitem">
-            <div id="resultsitemname">French Fries</div>
-            <div id="resultsitemprice">$2.50</div>
+        <div id="resultsitems">
+
         </div>
     </div>
 
@@ -59,10 +50,39 @@
                 // display results in page
                 document.getElementById("resultsimage").innerHTML = ' <h2 id="resultsimagewords">Processing Your Image...</h2>' + '<img src="'+data_uri+'"/>';
 
-                document.getElementById("takephotoinput").value = "Take Another Photo";
-                document.getElementById("resultscontainer").style.display = "block";
+                Webcam.upload(data_uri, 'upload.php', function(code, result) {
 
-                Webcam.upload(data_uri, 'upload.php', function(code, text) {});
+                    document.getElementById("resultsitems").innerHTML = "";
+
+                    console.log(result);
+
+                    result = JSON.parse(result);
+
+                    var total_money_wasted = 0;
+                    for(var i = 0; i < result.prices.length; i++)
+                    {
+                        total_money_wasted = total_money_wasted + result.prices[i];
+                    }
+
+                    total_money_wasted = parseFloat(total_money_wasted).toFixed(2);
+
+                    document.getElementById("resultsmoneyactual").innerHTML = "$" + total_money_wasted;
+
+                    for(var i = 0; i < result.names.length; i++)
+                    {
+                        document.getElementById("resultsitems").innerHTML += "<div id='resultsitem'><div id='resultsitemname'>"+result.names[i]+"</div><div id='resultsitemprice'>$"+parseFloat(result.prices[i]).toFixed(2)+"</div></div>"
+                    }
+
+                    document.getElementById("resultsimagewords").innerHTML = "Done!";
+                    document.getElementById("takephotoinput").value = "Take Another Photo";
+                    document.getElementById("resultscontainer").style.display = "block";
+
+                    setTimeout(function() {
+                            $('html, body').animate({
+                                scrollTop: $("#resultscontainer").offset().top
+                            }, 2000);
+                    }, 500);
+                });
             } );
         }
 

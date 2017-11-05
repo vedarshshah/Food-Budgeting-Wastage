@@ -33,6 +33,10 @@ h1 {
     margin-right: calc(50% - 160px);
 }
 
+h2 {
+    font-size: 1.2em;
+}
+
 #resultsimagewords {
     text-align: center;
     width: 25%;
