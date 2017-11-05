@@ -27,7 +27,7 @@ $name_to_price = [
 
 move_uploaded_file($_FILES['webcam']['tmp_name'], 'image.jpg');
 
-$image_url = "http://vedarsh.com/food_wastage_budgeting/image.jpg";
+$image_url = "http://vedarsh.com/rescue-food/image.jpg";
 
 $ch = curl_init();
 
