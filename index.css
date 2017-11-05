@@ -32,12 +32,9 @@ h1 {
     margin-right: calc(50% - 160px);
 }
 
-h2 {
-    font-size: 1.2em;
-}
-
 #resultsimagewords {
     text-align: center;
+    font-size: 1.2em;
 }
 
 #takephotoform {
@@ -106,4 +103,21 @@ h2 {
 #resultsitemprice {
     color: rgb(150, 150, 150);
     float: right;
+}
+
+#resultsnationalresource {
+    text-align: center;
+}
+
+#resultsnationalresource > h2 {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+#resultsnationalresource > h3 {
+    font-style: italic;
+}
+
+#resultsnationalresource > h3 > span {
+    font-size: 2em;
 }
