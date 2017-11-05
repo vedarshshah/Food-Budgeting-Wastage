@@ -28,7 +28,6 @@ h1 {
 }
 
 #resultsimage {
-    width: 100%;
     margin-left: calc(50% - 160px);
     margin-right: calc(50% - 160px);
 }
@@ -39,7 +38,6 @@ h2 {
 
 #resultsimagewords {
     text-align: center;
-    width: 25%;
 }
 
 #takephotoform {

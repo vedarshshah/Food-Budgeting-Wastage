@@ -27,11 +27,13 @@ $name_to_price = [
 
 move_uploaded_file($_FILES['webcam']['tmp_name'], 'image.jpg');
 
+$image_url = "http://vedarsh.com/food_wastage_budgeting/image.jpg";
+
 $ch = curl_init();
 
 curl_setopt($ch, CURLOPT_URL, "https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, "\n  {\n    \"inputs\": [\n      {\n        \"data\": {\n          \"image\": {\n            \"url\": \"https://image.ibb.co/dvBqVw/Screen_Shot_2017_11_04_at_9_48_39_PM.png\"\n          }\n        }\n      }\n    ]\n  }\n");
+curl_setopt($ch, CURLOPT_POSTFIELDS, "\n  {\n    \"inputs\": [\n      {\n        \"data\": {\n          \"image\": {\n            \"url\": \"{$image_url}\"\n          }\n        }\n      }\n    ]\n  }\n");
 curl_setopt($ch, CURLOPT_POST, 1);
 
 $headers = array();
