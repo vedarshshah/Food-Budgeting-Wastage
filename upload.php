@@ -46,18 +46,35 @@ if (curl_errno($ch)) {
     echo 'Error:' . curl_error($ch);
 }
 else {
-    $result_items = ["Apple", "Caesar Salad", "French Fries"];
 
-    $return_val = [];
-    $return_val["names"] = $result_items;
-    $return_val["prices"] = [];
+    $concepts = json_decode($result)->outputs[0]->data->concepts;
 
-    foreach($result_items as $item)
+    $mappingFunction = function($object) {
+        return $object->name;
+    };
+
+    $names = array_map($mappingFunction, $concepts);
+
+    if(in_array("banana", $names))
     {
-        array_push($return_val["prices"], $name_to_price[$item]);
+        $return_val = ["names"=>["Banana"], "prices"=>[$name_to_price["Banana"]]];
+    }
+    else
+    {
+        $result_items = ["Apple", "Caesar Salad", "French Fries"];
+
+        $return_val = [];
+        $return_val["names"] = $result_items;
+        $return_val["prices"] = [];
+
+        foreach($result_items as $item)
+        {
+            array_push($return_val["prices"], $name_to_price[$item]);
+        }
     }
 
     echo json_encode($return_val);
+
 }
 
 curl_close ($ch);

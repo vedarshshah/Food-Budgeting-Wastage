@@ -34,6 +34,7 @@
             <h2>You also wasted</h2>
             <h3><span>30 minutes</span> of farm-to-table labor</h3>
             <h3><span>0.05 gallons</span> of fuel</h3>
+            <h3><span>10 gallons</span> of water</h3>
         </div>
     </div>
 
@@ -50,6 +51,12 @@
         function take_snapshot() {
             // take snapshot and get image data
             Webcam.snap( function(data_uri) {
+
+                if(document.getElementById("takephotoinput").value === "Take Another Photo")
+                {
+                    location.reload();
+                    return true;
+                }
 
                 // display results in page
                 document.getElementById("resultsimage").innerHTML = ' <h2 id="resultsimagewords">Processing Your Image...</h2>' + '<img src="'+data_uri+'"/>';
@@ -86,7 +93,7 @@
                                 scrollTop: $("#resultscontainer").offset().top
                             }, 2000);
                     }, 500);
-                });
+               });
             } );
         }
 
