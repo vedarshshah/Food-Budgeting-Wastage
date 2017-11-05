@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Food Budgeting and Wastage</title>
+        <link rel="stylesheet" href="budgeting.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+
+    <h1>Food Budgeting</h1>
+    <h3 id="mainlink" onclick="goToMainLink();">Go to Food Wastage</h3>
+
+    <h2 id="mainwords">Your Monthly Food Budget Is:</h2>
+
+    <form id="budgetform">
+        $ <input type="number" id="budgetinput">
+    </form>
+
+    <div id="resultscontainer">
+        <div id="resultsmoney">
+            <span id="resultsmoneywords">
+                Your could buy:
+            </span>
+        </div>
+        <div id="resultsitem">
+            <div id="resultsitemname">15 - Caesar Salad</div>
+            <div id="resultsitemprice">$5</div>
+        </div>
+        <div id="resultsitem">
+            <div id="resultsitemname">10 - Apple</div>
+            <div id="resultsitemprice">$0.50</div>
+        </div>
+        <div id="resultsitem">
+            <div id="resultsitemname">8 - French Fries</div>
+            <div id="resultsitemprice">$2.50</div>
+        </div>
+    </div>
+
+    <script>
+
+        function goToMainLink() {
+            window.location.href = "/~vedarsh/Food-Budgeting-Wastage";
+        }
+
+    </script>
+
+</html>
