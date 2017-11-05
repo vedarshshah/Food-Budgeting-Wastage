@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Food Budgeting and Wastage</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <h1>Food Budgeting and Wastage</h1>
+
+    <div id="takephoto" onclick="takephoto();">Take Photo</div>
+
+    <div id="resultscontainer">
+        <div id="resultsmoney">
+            <span id="resultsmoneywords">
+                Today, your food wastage was worth:
+            </span>
+            <br />
+            <span id="resultsmoneyactual">
+                 $8
+            </span>
+        </div>
+        <div id="resultsitem">
+            <div id="resultsitemname">Caesar Salad</div>
+            <div id="resultsitemprice">$5</div>
+        </div>
+        <div id="resultsitem">
+            <div id="resultsitemname">Apple</div>
+            <div id="resultsitemprice">$0.50</div>
+        </div>
+        <div id="resultsitem">
+            <div id="resultsitemname">French Fries</div>
+            <div id="resultsitemprice">$2.50</div>
+        </div>
+    </div>
+
+    <script>
+
+        function takephoto() {
+            document.getElementById("resultscontainer").style.display = "block";
+            document.getElementById("takephoto").innerHTML = "Take Another Photo";
+        }
+
+    </script>
+
+</html>
